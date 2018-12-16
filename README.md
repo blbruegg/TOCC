@@ -1,19 +1,20 @@
-# Haven
+# The Other Cryptonight Coin
 
+Copyright (c) 2018-Present The Other Cryptonight Coin
 Copyright (c) 2017-2018 Haven Protocol
 
 Copyright (c) 2014-2017 The Monero Project.   
 Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Resources
-
+*** Needs Update ***
 - Web: [havenprotocol.com](https://havenprotocol.com)
 - Reddit: [/r/havenprotocol](https://www.reddit.com/r/havenprotocol/)
 - GitHub: [https://github.com/havenprotocol/haven](https://github.com/havenprotocol/haven)
 
 
 ## Introduction
-
+*** Forked from Haven-Protocol ***
 Haven is an experimental cryptocurrency that proposes a new way of achieving a stable fiat value storage while still having free reign to be traded at market value.
 
 
