@@ -1301,18 +1301,18 @@ namespace cryptonote
       std::string THE_OTHER_CRYPTONIGHT_COIN_ascii =
 
 "\n\n"
-"   /$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$  "
-"  |__  $$__//$$__  $$ /$$__  $$ /$$__  $$ "
-"     | $$  | $$  \ $$| $$  \__/| $$  \__/ "
-"     | $$  | $$  | $$| $$      | $$       "
-"     | $$  | $$  | $$| $$      | $$       "
-"     | $$  | $$  | $$| $$    $$| $$    $$ "
-"     | $$  |  $$$$$$/|  $$$$$$/|  $$$$$$/ "
-"     |__/   \______/  \______/  \______/  "
+"   /$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$  \n"
+"  |__  $$__//$$__  $$ /$$__  $$ /$$__  $$ \n"
+"     | $$  | $$  \ $$| $$  \__/| $$  \__/ \n"
+"     | $$  | $$  | $$| $$      | $$       \n"
+"     | $$  | $$  | $$| $$      | $$       \n"
+"     | $$  | $$  | $$| $$    $$| $$    $$ \n"
+"     | $$  |  $$$$$$/|  $$$$$$/|  $$$$$$/ \n"
+"     |__/   \______/  \______/  \______/  \n";
 
 
       if (m_offline)
-        main_message = "The daemon is running offline and will not attempt to sync to the Monero network.";
+        main_message = "The daemon is running offline and will not attempt to sync to the TOCC network.";
       else
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
       MGINFO_GREEN(ENDL << THE_OTHER_CRYPTONIGHT_COIN_ascii << ENDL);
@@ -1328,36 +1328,14 @@ namespace cryptonote
       m_starter_message_showed = true;
     }
 
-    m_fork_moaner.do_call(boost::bind(&core::check_fork_time, this));
     m_txpool_auto_relayer.do_call(boost::bind(&core::relay_txpool_transactions, this));
-    m_check_updates_interval.do_call(boost::bind(&core::check_updates, this));
     m_check_disk_space_interval.do_call(boost::bind(&core::check_disk_space, this));
     m_miner.on_idle();
     m_mempool.on_idle();
     return true;
   }
   //-----------------------------------------------------------------------------------------------
-  bool core::check_fork_time()
-  {
-    HardFork::State state = m_blockchain_storage.get_hard_fork_state();
-    const el::Level level = el::Level::Warning;
-    switch (state) {
-      case HardFork::LikelyForked:
-        MCLOG_RED(level, "global", "**********************************************************************");
-        MCLOG_RED(level, "global", "Last scheduled hard fork is too far in the past.");
-        MCLOG_RED(level, "global", "We are most likely forked from the network. Daemon update needed now.");
-        MCLOG_RED(level, "global", "**********************************************************************");
-        break;
-      case HardFork::UpdateNeeded:
-        MCLOG_RED(level, "global", "**********************************************************************");
-        MCLOG_RED(level, "global", "Last scheduled hard fork time shows a daemon update is needed now.");
-        MCLOG_RED(level, "global", "**********************************************************************");
-        break;
-      default:
-        break;
-    }
-    return true;
-  }
+  
   //-----------------------------------------------------------------------------------------------
   uint8_t core::get_ideal_hard_fork_version(uint64_t height) const
   {
