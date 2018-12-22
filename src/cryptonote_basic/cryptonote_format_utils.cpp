@@ -741,15 +741,15 @@ namespace cryptonote
     switch (std::atomic_load(&default_decimal_point))
     {
       case 12:
-        return "haven";
+        return "THE_OTHER_CRYPTONIGHT_COIN";
       case 9:
-        return "millihaven";
+        return "milliTHE_OTHER_CRYPTONIGHT_COIN";
       case 6:
-        return "microhaven";
+        return "microTHE_OTHER_CRYPTONIGHT_COIN";
       case 3:
-        return "nanohaven";
+        return "nanoTHE_OTHER_CRYPTONIGHT_COIN";
       case 0:
-        return "picohaven";
+        return "picoTHE_OTHER_CRYPTONIGHT_COIN";
       default:
         ASSERT_MES_AND_THROW("Invalid decimal point specification: " << default_decimal_point);
     }

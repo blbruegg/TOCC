@@ -38,7 +38,6 @@ using namespace epee;
 #include "cryptonote_core.h"
 #include "common/command_line.h"
 #include "common/util.h"
-#include "common/updates.h"
 #include "common/download.h"
 #include "common/threadpool.h"
 #include "common/command_line.h"
@@ -123,11 +122,6 @@ namespace cryptonote
   , "How many blocks to sync at once during chain synchronization (0 = adaptive)."
   , 0
   };
-  static const command_line::arg_descriptor<std::string> arg_check_updates = {
-    "check-updates"
-  , "Check for new versions of monero: [disabled|notify|download|update]"
-  , "notify"
-  };
   static const command_line::arg_descriptor<bool> arg_no_fluffy_blocks  = {
     "no-fluffy-blocks"
   , "Relay blocks as normal blocks"
@@ -208,7 +202,7 @@ namespace cryptonote
     }
     return res;
   }
-  //-----------------------------------------------------------------------------------
+  //---------------Possibly Remove AutoUpdate-------------------------------------------
   void core::stop()
   {
     m_blockchain_storage.cancel();
@@ -498,7 +492,7 @@ namespace cryptonote
     // with respect to what blocks we already have
     CHECK_AND_ASSERT_MES(update_checkpoints(), false, "One or more checkpoints loaded from json or dns conflicted with existing checkpoints.");
 
-   // DNS versions checking
+   // DNS versions checking --- Possibly Remove Updates ----
     if (check_updates_string == "disabled")
       check_updates_level = UPDATES_DISABLED;
     else if (check_updates_string == "notify")
@@ -1319,7 +1313,7 @@ namespace cryptonote
     if(!m_starter_message_showed)
     {
       std::string main_message;
-      std::string haven_ascii =
+      std::string THE_OTHER_CRYPTONIGHT_COIN_ascii =
 
 "\n\n"
 "                                 ,####################\n"
@@ -1360,7 +1354,7 @@ namespace cryptonote
         main_message = "The daemon is running offline and will not attempt to sync to the Monero network.";
       else
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
-      MGINFO_GREEN(ENDL << haven_ascii << ENDL);
+      MGINFO_GREEN(ENDL << THE_OTHER_CRYPTONIGHT_COIN_ascii << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL
@@ -1436,7 +1430,7 @@ namespace cryptonote
     if (!tools::check_updates(software, buildtag, version, hash))
       return false;
 
-    if (tools::vercmp(version.c_str(), HAVEN_VERSION) <= 0)
+    if (tools::vercmp(version.c_str(), THE_OTHER_CRYPTONIGHT_COIN_VERSION) <= 0)
       return true;
 
     std::string url = tools::get_update_url(software, subdir, buildtag, version, true);

@@ -631,7 +631,7 @@ bool t_command_parser_executor::sync_info(const std::vector<std::string>& args)
 
 bool t_command_parser_executor::version(const std::vector<std::string>& args)
 {
-  std::cout << "Haven '" << HAVEN_RELEASE_NAME << "' (v" << HAVEN_VERSION_FULL << ")" << std::endl;
+  std::cout << "THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL << ")" << std::endl;
   return true;
 }
 

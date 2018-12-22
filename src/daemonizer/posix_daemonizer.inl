@@ -100,7 +100,7 @@ namespace daemonizer
     }
     else
     {
-      //LOG_PRINT_L0("Haven '" << HAVEN_RELEASE_NAME << "' (v" << HAVEN_VERSION_FULL);
+      //LOG_PRINT_L0("THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL);
       return executor.run_interactive(vm);
     }
   }

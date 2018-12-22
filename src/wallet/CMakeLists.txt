@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, Haven Protocol
+# Copyright (c) 2017-2018, THE_OTHER_CRYPTONIGHT_COIN Protocol
 #
 # Portions Copyright (c) 2014-2017 The Monero Project.
 #
@@ -98,7 +98,7 @@ target_link_libraries(wallet_rpc_server
     ${EXTRA_LIBRARIES})
 set_property(TARGET wallet_rpc_server
   PROPERTY
-    OUTPUT_NAME "haven-wallet-rpc")
+    OUTPUT_NAME "THE_OTHER_CRYPTONIGHT_COIN-wallet-rpc")
 install(TARGETS wallet_rpc_server DESTINATION bin)
 
 

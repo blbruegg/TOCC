@@ -34,7 +34,6 @@ using namespace epee;
 
 #include "core_rpc_server.h"
 #include "common/command_line.h"
-#include "common/updates.h"
 #include "common/download.h"
 #include "common/util.h"
 #include "common/perf_timer.h"
@@ -1580,7 +1579,7 @@ namespace cryptonote
       res.status = "Error checking for updates";
       return true;
     }
-    if (tools::vercmp(version.c_str(), HAVEN_VERSION) <= 0)
+    if (tools::vercmp(version.c_str(), THE_OTHER_CRYPTONIGHT_COIN_VERSION) <= 0)
     {
       res.update = false;
       res.status = CORE_RPC_STATUS_OK;

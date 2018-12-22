@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018 Haven Protocol
+// Copyright (c) 2017-2018 THE_OTHER_CRYPTONIGHT_COIN Protocol
 //
 // Copyright (c) 2014-2017, The Monero Project
 //
@@ -1367,7 +1367,7 @@ namespace nodetool
     }
     rsp.connections_count = m_net_server.get_config_object().get_connections_count();
     rsp.incoming_connections_count = rsp.connections_count - get_outgoing_connections_count();
-    rsp.version = HAVEN_VERSION_FULL;
+    rsp.version = THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL;
     rsp.os_version = tools::get_os_version_string();
     m_payload_handler.get_stat_info(rsp.payload_info);
     return 1;

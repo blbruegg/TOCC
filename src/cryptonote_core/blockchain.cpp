@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018 Haven Protocol
+// Copyright (c) 2017-2018 THE_OTHER_CRYPTONIGHT_COIN Protocol
 //
 // Copyright (c) 2014-2017, The Monero Project
 //
@@ -1005,7 +1005,7 @@ difficulty_type Blockchain::get_next_difficulty_for_alternative_chain(const std:
       cumulative_difficulties.push_back(m_db->get_block_cumulative_difficulty(main_chain_start_offset));
     }
 
-    // make sure we haven't accidentally grabbed too many blocks...maybe don't need this check?
+    // make sure we THE_OTHER_CRYPTONIGHT_COIN't accidentally grabbed too many blocks...maybe don't need this check?
     CHECK_AND_ASSERT_MES((alt_chain.size() + timestamps.size()) <= difficulty_blocks_count, false, "Internal error, alt_chain.size()[" << alt_chain.size() << "] + vtimestampsec.size()[" << timestamps.size() << "] NOT <= DIFFICULTY_WINDOW[]" << difficulty_blocks_count);
 
     for (auto it : alt_chain)
