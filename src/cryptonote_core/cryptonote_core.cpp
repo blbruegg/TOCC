@@ -1301,14 +1301,22 @@ namespace cryptonote
       std::string THE_OTHER_CRYPTONIGHT_COIN_ascii =
 
 "\n\n"
-"   ,/$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$\n"
-"   |__  $$__//$$__  $$ /$$__  $$ /$$__  $$,\n"
-"     !| $$  | $$  \ $$| $$  \__/| $$  \__/\n"
-"     !| $$  | $$  | $$| $$      | $$      \n"
-"     !| $$  | $$  | $$| $$      | $$      \n"
-"     !| $$  | $$  | $$| $$    $$| $$    $$\n"
-"     !| $$  |  $$$$$$/|  $$$$$$/|  $$$$$$/\n"
-"     !|__/   \______/  \______/  \______/\n";
+" TTTTTTTTTTTTTTTTTTTTTTT     OOOOOOOOO             CCCCCCCCCCCCC       CCCCCCCCCCCCC"
+"T:::::::::::::::::::::T   OO:::::::::OO        CCC::::::::::::C    CCC::::::::::::C"
+"T:::::::::::::::::::::T OO:::::::::::::OO    CC:::::::::::::::C  CC:::::::::::::::"
+"T:::::TT:::::::TT:::::TO:::::::OOO:::::::O  C:::::CCCCCCCC::::C C:::::CCCCCCCC::::C"
+"TTTTTT  T:::::T  TTTTTTO::::::O   O::::::O C:::::C       CCCCCCC:::::C       CCCCCC"
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O:::::O     O:::::OC:::::C             C:::::C              "
+"        T:::::T        O::::::O   O::::::O C:::::C       CCCCCCC:::::C       CCCCCC"
+"      TT:::::::TT      O:::::::OOO:::::::O  C:::::CCCCCCCC::::C C:::::CCCCCCCC::::C"
+"      T:::::::::T       OO:::::::::::::OO    CC:::::::::::::::C  CC:::::::::::::::C"
+"      T:::::::::T         OO:::::::::OO        CCC::::::::::::C    CCC::::::::::::C"
+"      TTTTTTTTTTT           OOOOOOOOO             CCCCCCCCCCCCC       CCCCCCCCCCCCC";
 
 
       if (m_offline)
