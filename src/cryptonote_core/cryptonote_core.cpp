@@ -231,7 +231,6 @@ namespace cryptonote
     command_line::add_arg(desc, arg_fast_block_sync);
     command_line::add_arg(desc, arg_show_time_stats);
     command_line::add_arg(desc, arg_block_sync_size);
-    command_line::add_arg(desc, arg_check_updates);
     command_line::add_arg(desc, arg_no_fluffy_blocks);
     command_line::add_arg(desc, arg_test_dbg_lock_sleep);
     command_line::add_arg(desc, arg_offline);
@@ -352,7 +351,6 @@ namespace cryptonote
     bool db_salvage = command_line::get_arg(vm, cryptonote::arg_db_salvage) != 0;
     bool fast_sync = command_line::get_arg(vm, arg_fast_block_sync) != 0;
     uint64_t blocks_threads = command_line::get_arg(vm, arg_prep_blocks_threads);
-    std::string check_updates_string = command_line::get_arg(vm, arg_check_updates);
     size_t max_txpool_size = command_line::get_arg(vm, arg_max_txpool_size);
 
     boost::filesystem::path folder(m_config_folder);
@@ -1316,38 +1314,14 @@ namespace cryptonote
       std::string THE_OTHER_CRYPTONIGHT_COIN_ascii =
 
 "\n\n"
-"                                 ,####################\n"
-"                            ###############################,\n"
-"                        !######################################\n"
-"                     !#############################################\n"
-"                   ##################################################\n"
-"                 ########! !--------------------------------! !########\n"
-"               ##########! !################################! !#########,\n"
-"              ###########! !###  ======================  ###! !##########!\n"
-"            !############! !###  ######  ######  ######  ###! !############\n"
-"           !#############! !###  ######  ######  ######  ###! !#############\n"
-"          !##############! !###  ######  ######  ######  ###! !##############\n"
-"          ###############! !###  ######  ######  ######  ###! !##############!\n"
-"         !###############! !###  ######  ####  ########  ###! !###############\n"
-"         ################! !###  ######  ` ,###########  ###! !###############!\n"
-"        !################! !###  #####   ##########` ,#  ###! !################\n"
-"        !################! !###  #` ,##  #######  #####  ###! !################\n"
-"        !################! !###  ######  ###` ,  ######  ###! !################\n"
-"        !################! !###  ######    ####  ######  ###! !################\n"
-"         ################! !###  ######  ######  ######  ###! !###############!\n"
-"         !###############! !###  ######  ######  ######  ###! !###############`\n"
-"          ###############! !###  ######  ######  ######  ###! !##############!\n"
-"          !##############! !#####   ################   #####! !##############\n"
-"           !#############!  #######,  ############  ,####### ,##############`\n"
-"            !################  #######  ########  #######  ################`\n"
-"              #################  #######, `##` ,####### ,#################\n"
-"               ###################  #######  #######  ###################\n"
-"                '###################  ############ ,###################\n"
-"                  `#################### `######` ####################\n"
-"                     ####################  ## ,####################\n"
-"                        ###################,,###################\n"
-"                           '################################`\n"
-"                                '######################`\n";
+"   /$$$$$$$$ /$$$$$$   /$$$$$$   /$$$$$$ 
+"  |__  $$__//$$__  $$ /$$__  $$ /$$__  $$
+"     | $$  | $$  \ $$| $$  \__/| $$  \__/
+"     | $$  | $$  | $$| $$      | $$      
+"     | $$  | $$  | $$| $$      | $$      
+"     | $$  | $$  | $$| $$    $$| $$    $$
+"     | $$  |  $$$$$$/|  $$$$$$/|  $$$$$$/
+"     |__/   \______/  \______/  \______/ 
 
 
       if (m_offline)
@@ -1406,132 +1380,6 @@ namespace cryptonote
   uint8_t core::get_hard_fork_version(uint64_t height) const
   {
     return get_blockchain_storage().get_hard_fork_version(height);
-  }
-  //-----------------------------------------------------------------------------------------------
-  bool core::check_updates()
-  {
-    static const char software[] = "monero";
-#ifdef BUILD_TAG
-    static const char buildtag[] = BOOST_PP_STRINGIZE(BUILD_TAG);
-    static const char subdir[] = "cli"; // because it can never be simple
-#else
-    static const char buildtag[] = "source";
-    static const char subdir[] = "source"; // because it can never be simple
-#endif
-
-    if (m_offline)
-      return true;
-
-    if (check_updates_level == UPDATES_DISABLED)
-      return true;
-
-    std::string version, hash;
-    MCDEBUG("updates", "Checking for a new " << software << " version for " << buildtag);
-    if (!tools::check_updates(software, buildtag, version, hash))
-      return false;
-
-    if (tools::vercmp(version.c_str(), THE_OTHER_CRYPTONIGHT_COIN_VERSION) <= 0)
-      return true;
-
-    std::string url = tools::get_update_url(software, subdir, buildtag, version, true);
-    MCLOG_CYAN(el::Level::Info, "global", "Version " << version << " of " << software << " for " << buildtag << " is available: " << url << ", SHA256 hash " << hash);
-
-    if (check_updates_level == UPDATES_NOTIFY)
-      return true;
-
-    url = tools::get_update_url(software, subdir, buildtag, version, false);
-    std::string filename;
-    const char *slash = strrchr(url.c_str(), '/');
-    if (slash)
-      filename = slash + 1;
-    else
-      filename = std::string(software) + "-update-" + version;
-    boost::filesystem::path path(epee::string_tools::get_current_module_folder());
-    path /= filename;
-
-    boost::unique_lock<boost::mutex> lock(m_update_mutex);
-
-    if (m_update_download != 0)
-    {
-      MCDEBUG("updates", "Already downloading update");
-      return true;
-    }
-
-    crypto::hash file_hash;
-    if (!tools::sha256sum(path.string(), file_hash) || (hash != epee::string_tools::pod_to_hex(file_hash)))
-    {
-      MCDEBUG("updates", "We don't have that file already, downloading");
-      const std::string tmppath = path.string() + ".tmp";
-      if (epee::file_io_utils::is_file_exist(tmppath))
-      {
-        MCDEBUG("updates", "We have part of the file already, resuming download");
-      }
-      m_last_update_length = 0;
-      m_update_download = tools::download_async(tmppath, url, [this, hash, path](const std::string &tmppath, const std::string &uri, bool success) {
-        bool remove = false, good = true;
-        if (success)
-        {
-          crypto::hash file_hash;
-          if (!tools::sha256sum(tmppath, file_hash))
-          {
-            MCERROR("updates", "Failed to hash " << tmppath);
-            remove = true;
-            good = false;
-          }
-          else if (hash != epee::string_tools::pod_to_hex(file_hash))
-          {
-            MCERROR("updates", "Download from " << uri << " does not match the expected hash");
-            remove = true;
-            good = false;
-          }
-        }
-        else
-        {
-          MCERROR("updates", "Failed to download " << uri);
-          good = false;
-        }
-        boost::unique_lock<boost::mutex> lock(m_update_mutex);
-        m_update_download = 0;
-        if (success && !remove)
-        {
-          std::error_code e = tools::replace_file(tmppath, path.string());
-          if (e)
-          {
-            MCERROR("updates", "Failed to rename downloaded file");
-            good = false;
-          }
-        }
-        else if (remove)
-        {
-          if (!boost::filesystem::remove(tmppath))
-          {
-            MCERROR("updates", "Failed to remove invalid downloaded file");
-            good = false;
-          }
-        }
-        if (good)
-          MCLOG_CYAN(el::Level::Info, "updates", "New version downloaded to " << path.string());
-      }, [this](const std::string &path, const std::string &uri, size_t length, ssize_t content_length) {
-        if (length >= m_last_update_length + 1024 * 1024 * 10)
-        {
-          m_last_update_length = length;
-          MCDEBUG("updates", "Downloaded " << length << "/" << (content_length ? std::to_string(content_length) : "unknown"));
-        }
-        return true;
-      });
-    }
-    else
-    {
-      MCDEBUG("updates", "We already have " << path << " with expected hash");
-    }
-
-    lock.unlock();
-
-    if (check_updates_level == UPDATES_DOWNLOAD)
-      return true;
-
-    MCERROR("updates", "Download/update not implemented yet");
-    return true;
   }
   //-----------------------------------------------------------------------------------------------
   bool core::check_disk_space()
