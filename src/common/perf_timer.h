@@ -33,8 +33,8 @@
 #include <memory>
 #include "misc_log_ex.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "perf"
+#undef TOCC_DEFAULT_LOG_CATEGORY
+#define TOCC_DEFAULT_LOG_CATEGORY "perf"
 
 namespace tools
 {

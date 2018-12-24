@@ -51,8 +51,8 @@ using namespace epee;
 
 #include <functional>
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "daemon"
+#undef TOCC_DEFAULT_LOG_CATEGORY
+#define TOCC_DEFAULT_LOG_CATEGORY "daemon"
 
 namespace daemonize {
 

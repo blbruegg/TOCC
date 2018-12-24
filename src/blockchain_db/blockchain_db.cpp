@@ -47,8 +47,8 @@ static const char *db_types[] = {
   NULL
 };
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "blockchain.db"
+#undef TOCC_DEFAULT_LOG_CATEGORY
+#define TOCC_DEFAULT_LOG_CATEGORY "blockchain.db"
 
 using epee::string_tools::pod_to_hex;
 
