@@ -1298,7 +1298,7 @@ namespace cryptonote
     if(!m_starter_message_showed)
     {
       std::string main_message;
-      std::string THE_OTHER_CRYPTONIGHT_COIN_ascii =
+      std::string TOCC_ascii =
 
 "\n\n"
 " TTTTTTTTTTTTTTTTTTTTTTT     OOOOOOOOO             CCCCCCCCCCCCC       CCCCCCCCCCCCC"
@@ -1323,7 +1323,7 @@ namespace cryptonote
         main_message = "The daemon is running offline and will not attempt to sync to the TOCC network.";
       else
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
-      MGINFO_GREEN(ENDL << THE_OTHER_CRYPTONIGHT_COIN_ascii << ENDL);
+      MGINFO_GREEN(ENDL << TOCC_ascii << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL

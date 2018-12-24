@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018, THE_OTHER_CRYPTONIGHT_COIN Protocol
+// Copyright (c) 2017-2018, TOCC Protocol
 //
 // Copyright (c) 2014-2017 The Monero Project.
 //
@@ -64,7 +64,7 @@ namespace
   const command_line::arg_descriptor<std::string> arg_wallet_dir = {"wallet-dir", "Directory for newly created wallets"};
   const command_line::arg_descriptor<bool> arg_prompt_for_password = {"prompt-for-password", "Prompts for password when not provided", false};
 
-  constexpr const char default_rpc_username[] = "THE_OTHER_CRYPTONIGHT_COIN";
+  constexpr const char default_rpc_username[] = "TOCC";
 
   boost::optional<tools::password_container> password_prompter(const char *prompt, bool verify)
   {
@@ -202,7 +202,7 @@ namespace tools
           string_encoding::base64_encode(rand_128bit.data(), rand_128bit.size())
         );
 
-        std::string temp = "THE_OTHER_CRYPTONIGHT_COIN-wallet-rpc." + bind_port + ".login";
+        std::string temp = "TOCC-wallet-rpc." + bind_port + ".login";
         rpc_login_file = tools::private_file::create(temp);
         if (!rpc_login_file.handle())
         {
@@ -2764,12 +2764,12 @@ int main(int argc, char** argv) {
 
   const auto vm = wallet_args::main(
     argc, argv,
-    "THE_OTHER_CRYPTONIGHT_COIN-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>|--wallet-dir=<directory>] [--rpc-bind-port=<port>]",
-    tools::wallet_rpc_server::tr("This is the RPC THE_OTHER_CRYPTONIGHT_COIN wallet. It needs to connect to a THE_OTHER_CRYPTONIGHT_COIN\ndaemon to work correctly."),
+    "TOCC-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>|--wallet-dir=<directory>] [--rpc-bind-port=<port>]",
+    tools::wallet_rpc_server::tr("This is the RPC TOCC wallet. It needs to connect to a TOCC\ndaemon to work correctly."),
     desc_params,
     po::positional_options_description(),
     [](const std::string &s, bool emphasis){ epee::set_console_color(emphasis ? epee::console_color_white : epee::console_color_default, true); std::cout << s << std::endl; if (emphasis) epee::reset_console_color(); },
-    "THE_OTHER_CRYPTONIGHT_COIN-wallet-rpc.log",
+    "TOCC-wallet-rpc.log",
     true
   );
   if (!vm)

@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018, THE_OTHER_CRYPTONIGHT_COIN Protocol
+// Copyright (c) 2017-2018, TOCC Protocol
 //
 // Copyright (c) 2014-2017, The Monero Project
 //

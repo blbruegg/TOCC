@@ -60,5 +60,5 @@ target_link_libraries(simplewallet
     ${EXTRA_LIBRARIES})
 set_property(TARGET simplewallet
   PROPERTY
-    OUTPUT_NAME "THE_OTHER_CRYPTONIGHT_COIN-wallet-cli")
+    OUTPUT_NAME "TOCC-wallet-cli")
 install(TARGETS simplewallet DESTINATION bin)

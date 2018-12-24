@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018, THE_OTHER_CRYPTONIGHT_COIN Protocol
+// Copyright (c) 2017-2018, TOCC Protocol
 //
 // Copyright (c) 2014-2017 The Monero Project.
 //
@@ -6677,7 +6677,7 @@ std::vector<wallet2::pending_tx> wallet2::create_transactions_2(std::vector<cryp
     LOG_PRINT_L2("Considering whether to create a tx now, " << tx.selected_transfers.size() << " inputs, tx limit "
       << upper_transaction_size_limit);
     bool try_tx = false;
-    // if we have preferred picks, but THE_OTHER_CRYPTONIGHT_COIN't yet used all of them, continue
+    // if we have preferred picks, but TOCC't yet used all of them, continue
     if (preferred_inputs.empty())
     {
       if (adding_fee)

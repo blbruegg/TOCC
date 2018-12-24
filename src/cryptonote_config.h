@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018, THE_OTHER_CRYPTONIGHT_COIN Protocol
+// Copyright (c) 2017-2018, TOCC Protocol
 //
 // Copyright (c) 2014-2017 The Monero Project.
 //
@@ -123,7 +123,7 @@
 
 #define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                         "THE_OTHER_CRYPTONIGHT_COIN"
+#define CRYPTONOTE_NAME                         "TOCC"
 #define CRYPTONOTE_POOLDATA_FILENAME            "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME      "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME "lock.mdb"

@@ -354,7 +354,7 @@ namespace Language
         "doenbaar",
         "doerak",
         "dogma",
-        "dokTHE_OTHER_CRYPTONIGHT_COIN",
+        "dokTOCC",
         "dokwerker",
         "doling",
         "dolphijn",

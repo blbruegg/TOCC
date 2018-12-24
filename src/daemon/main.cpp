@@ -124,7 +124,7 @@ int main(int argc, char const * argv[])
 
     if (command_line::get_arg(vm, command_line::arg_help))
     {
-      std::cout << "THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL << ")" << ENDL << ENDL;
+      std::cout << "TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")" << ENDL << ENDL;
       std::cout << "Usage: " + std::string{argv[0]} + " [options|settings] [daemon_command...]" << std::endl << std::endl;
       std::cout << visible_options << std::endl;
       return 0;
@@ -133,7 +133,7 @@ int main(int argc, char const * argv[])
     // Monero Version
     if (command_line::get_arg(vm, command_line::arg_version))
     {
-      std::cout << "THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL << ")" << ENDL;
+      std::cout << "TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")" << ENDL;
       return 0;
     }
 
@@ -286,7 +286,7 @@ int main(int argc, char const * argv[])
       tools::set_max_concurrency(command_line::get_arg(vm, daemon_args::arg_max_concurrency));
 
     // logging is now set up
-    MGINFO("THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL << ")");
+    MGINFO("TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")");
 
     MINFO("Moving from main() into the daemonize now.");
 

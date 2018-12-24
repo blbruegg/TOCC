@@ -1,4 +1,4 @@
-# THE_OTHER_CRYPTONIGHT_COIN Blockchain Utilities
+# TOCC Blockchain Utilities
 
 Copyright (c) 2014-2017, The Monero Project
 

@@ -332,7 +332,7 @@ namespace Language
         "cetro",
         "ceus",
         "cevar",
-        "cTHE_OTHER_CRYPTONIGHT_COINa",
+        "cTOCCa",
         "cheroqui",
         "chita",
         "chovido",

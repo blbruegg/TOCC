@@ -106,5 +106,5 @@ target_link_libraries(daemon
     ${EXTRA_LIBRARIES})
 set_property(TARGET daemon
   PROPERTY
-    OUTPUT_NAME "THE_OTHER_CRYPTONIGHT_COINd")
+    OUTPUT_NAME "TOCCd")
 install(TARGETS daemon DESTINATION bin)

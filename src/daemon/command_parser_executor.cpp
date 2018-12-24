@@ -620,7 +620,7 @@ bool t_command_parser_executor::sync_info(const std::vector<std::string>& args)
 
 bool t_command_parser_executor::version(const std::vector<std::string>& args)
 {
-  std::cout << "THE_OTHER_CRYPTONIGHT_COIN '" << THE_OTHER_CRYPTONIGHT_COIN_RELEASE_NAME << "' (v" << THE_OTHER_CRYPTONIGHT_COIN_VERSION_FULL << ")" << std::endl;
+  std::cout << "TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")" << std::endl;
   return true;
 }
 
