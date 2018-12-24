@@ -145,8 +145,8 @@ namespace cryptonote
               m_last_dns_checkpoints_update(0),
               m_last_json_checkpoints_update(0),
               m_disable_dns_checkpoints(false),
-              m_threadpool(tools::threadpool::getInstance()),
-              m_update_download(0)
+              m_threadpool(tools::threadpool::getInstance())
+              
   {
     m_checkpoints_updating.clear();
     set_cryptonote_protocol(pprotocol);
