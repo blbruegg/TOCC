@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, TOCC Protocol
+# Copyright (c) 2018-PRESENT, TOCC Protocol
 #
 # Portions Copyright (c) 2014-2017 The Monero Project.
 #
@@ -89,22 +89,22 @@ function (monero_add_library name)
 endfunction()
 
 function (monero_add_library_with_deps)
-  cmake_parse_arguments(MONERO_ADD_LIBRARY "" "NAME" "DEPENDS;SOURCES" ${ARGN})
-  source_group("${MONERO_ADD_LIBRARY_NAME}" FILES ${MONERO_ADD_LIBRARY_SOURCES})
+  cmake_parse_arguments(TOCC_ADD_LIBRARY "" "NAME" "DEPENDS;SOURCES" ${ARGN})
+  source_group("${TOCC_ADD_LIBRARY_NAME}" FILES ${TOCC_ADD_LIBRARY_SOURCES})
 
   # Define a ("virtual") object library and an actual library that links those
   # objects together. The virtual libraries can be arbitrarily combined to link
   # any subset of objects into one library archive. This is used for releasing
   # libwallet, which combines multiple components.
-  set(objlib obj_${MONERO_ADD_LIBRARY_NAME})
-  add_library(${objlib} OBJECT ${MONERO_ADD_LIBRARY_SOURCES})
-  add_library("${MONERO_ADD_LIBRARY_NAME}" $<TARGET_OBJECTS:${objlib}>)
-  if (MONERO_ADD_LIBRARY_DEPENDS)
-    add_dependencies(${objlib} ${MONERO_ADD_LIBRARY_DEPENDS})
+  set(objlib obj_${TOCC_ADD_LIBRARY_NAME})
+  add_library(${objlib} OBJECT ${TOCC_ADD_LIBRARY_SOURCES})
+  add_library("${TOCC_ADD_LIBRARY_NAME}" $<TARGET_OBJECTS:${objlib}>)
+  if (TOCC_ADD_LIBRARY_DEPENDS)
+    add_dependencies(${objlib} ${TOCC_ADD_LIBRARY_DEPENDS})
   endif()
-  set_property(TARGET "${MONERO_ADD_LIBRARY_NAME}" PROPERTY FOLDER "libs")
+  set_property(TARGET "${TOCC_ADD_LIBRARY_NAME}" PROPERTY FOLDER "libs")
   target_compile_definitions(${objlib}
-    PRIVATE $<TARGET_PROPERTY:${MONERO_ADD_LIBRARY_NAME},INTERFACE_COMPILE_DEFINITIONS>)
+    PRIVATE $<TARGET_PROPERTY:${TOCC_ADD_LIBRARY_NAME},INTERFACE_COMPILE_DEFINITIONS>)
 endfunction ()
 
 include(Version)
