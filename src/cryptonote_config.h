@@ -144,7 +144,7 @@
 // New constants are intended to go here
 namespace config
 {
-  uint64_t const DEFAULT_FEE_ATOMIC_XMR_PER_KB = 500; // Just a placeholder!  Change me!
+  uint64_t const DEFAULT_FEE_ATOMIC_TOCC_PER_KB = 500; // Just a placeholder!  Change me!
   uint8_t const FEE_CALCULATION_MAX_RETRIES = 10;
   uint64_t const DEFAULT_DUST_THRESHOLD = ((uint64_t)2000000000); // 2 * pow(10, 9)
   uint64_t const BASE_REWARD_CLAMP_THRESHOLD = ((uint64_t)100000000); // pow(10, 8)
@@ -153,9 +153,9 @@ namespace config
   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x5af4; //hvx
   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0xcd774; //hvi
   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x12d974; //hvs
-  uint16_t const P2P_DEFAULT_PORT = 17749;
-  uint16_t const RPC_DEFAULT_PORT = 17750;
-  uint16_t const ZMQ_RPC_DEFAULT_PORT = 17751;
+  uint16_t const P2P_DEFAULT_PORT = 16969;
+  uint16_t const RPC_DEFAULT_PORT = 16970;
+  uint16_t const ZMQ_RPC_DEFAULT_PORT = 16971;
   boost::uuids::uuid const NETWORK_ID = { {
       0x05 ,0x39, 0xF1, 0x70 , 0x61, 0x04 , 0x41, 0x60, 0x17, 0x32, 0x00, 0x81, 0x16, 0xA1, 0xA1, 0x10
     } };
