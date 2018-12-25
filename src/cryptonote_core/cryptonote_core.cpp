@@ -203,10 +203,10 @@ namespace cryptonote
     return res;
   }
   //---------------Possibly Remove AutoUpdate-------------------------------------------
-  /*void core::stop()
+  void core::stop()
   {
     m_blockchain_storage.cancel();
-
+    /*
     tools::download_async_handle handle;
     {
       boost::lock_guard<boost::mutex> lock(m_update_mutex);
@@ -215,8 +215,9 @@ namespace cryptonote
     }
     if (handle)
       tools::download_cancel(handle);
+     */
   }
-  */
+  
   //-----------------------------------------------------------------------------------
   void core::init_options(boost::program_options::options_description& desc)
   {
