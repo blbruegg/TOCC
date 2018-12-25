@@ -1,0 +1,21 @@
+[Unit]
+Description=TOCC Full Node
+After=network.target
+
+[Service]
+User=TOCC
+Group=TOCC
+WorkingDirectory=~
+RuntimeDirectory=TOCC
+
+Type=forking
+PIDFile=/run/TOCC/TOCCd.pid
+
+ExecStart=/usr/bin/havend --config-file /etc/TOCCd.conf \
+    --detach --pidfile /run/TOCC/TOCCd.pid
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,8 +1,7 @@
 # The Other Cryptonight Coin
 
-Copyright (c) 2018-Present The Other Cryptonight Coin
-Copyright (c) 2017-2018 Haven Protocol
-
+Copyright (c) 2018-Present The Other Cryptonight Coin (TOCC).
+Copyright (c) 2017-2018 Haven Protocol.
 Copyright (c) 2014-2017 The Monero Project.   
 Portions Copyright (c) 2012-2013 The Cryptonote developers.
 

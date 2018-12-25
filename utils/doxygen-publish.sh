@@ -7,7 +7,7 @@ if [[ ! -r "Doxyfile" ]] ; then
 	exit 1
 fi
 
-wwwdir="$HOME/monero-www/"
+wwwdir="$HOME/TOCC-www/"
 if [[ ! -w "$wwwdir" ]] ; then
 	echo "Error, can not write into wwwdir=$wwwdir. It should be a directory readable/connected to your webserver, or a symlink to such directory"
 	exit 1
