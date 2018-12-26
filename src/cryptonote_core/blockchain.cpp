@@ -1094,7 +1094,7 @@ bool Blockchain::validate_miner_transaction(const block& b, size_t cumulative_bl
     return false;
   }
 
-  if (version >= 1) {
+  if (version >= 3) {
     if (already_generated_coins != 0)
     {
       uint64_t governance_reward = get_governance_reward(m_db->height(), base_reward);
