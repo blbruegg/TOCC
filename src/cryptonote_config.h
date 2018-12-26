@@ -159,11 +159,11 @@ namespace config
   boost::uuids::uuid const NETWORK_ID = { {
       0x02 ,0x03, 0xF5, 0x07 , 0x11, 0x13 , 0x17, 0x19, 0x23, 0x29, 0x31, 0x37, 0x41, 0xA7, 0xA3, 0x43
     } };
-  std::string const GENESIS_TX = "023c01ff0001ffffffffffff07020bf6522f9152fa26cd1fc5c022b1a9e13dab697f3acf4b4d0ca6950a867a194321011d92826d0656958865a035264725799f39f6988faa97d532f972895de849496d00";
+  std::string const GENESIS_TX = "";
 
-  uint32_t const GENESIS_NONCE = 10000;
+  uint32_t const GENESIS_NONCE = 11000;
 
-  std::string const GOVERNANCE_WALLET_ADDRESS = "hvxy7YfeE8SdTrCmSqLB59WoQn3ZQun1aLX36X3eb1R7Fb26VuNpc235q4fguGUxfGKerywFPnweu15S8RB8DzTJ8Q4hGJCgvv";
+  std::string const GOVERNANCE_WALLET_ADDRESS = "TCA3ARjqR3VZC5vBTE9b54gcpEkw6aSTcJuxFTDFaTHgCEoGBFnaxLTCsrC6F9SzddXJQ35veQdgp5vtzAzLtmJ97fK4PXefT3";
 
   namespace testnet
   {
@@ -176,9 +176,9 @@ namespace config
     boost::uuids::uuid const NETWORK_ID = { {
         0x02 ,0x03, 0xF5, 0x07 , 0x11, 0x13 , 0x17, 0x19, 0x23, 0x29, 0x31, 0x37, 0x41, 0xA7, 0xA3, 0x43
       } };
-    std::string const GENESIS_TX = "013c01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101168d0c4ca86fb55a4cf6a36d31431be1c53a3bd7411bb24e8832410289fa6f3b";
-    uint32_t const GENESIS_NONCE = 10001;
+    std::string const GENESIS_TX = "";
+    uint32_t const GENESIS_NONCE = 11001;
 
-    std::string const GOVERNANCE_WALLET_ADDRESS = "hvtaNJ3NX37g5H1cNS77CoRWgLTSkPciY8t2VDYcKkXkAsdjMtmKBJiLA4cfwn4t2tNUv74p7C6fb7Ti2Yu3azRNAD4BK7BMpt";
+    std::string const GOVERNANCE_WALLET_ADDRESS = "TCD1S6DmYgihTxx5Zms2cDHE8GVd4Lhen9JVycyeMeb2asTC3iL3VV2MrPgWe5x4qTTzMSudH2M8e2qgW7ubpVPM49sXsjNMgw";
   }
 }
