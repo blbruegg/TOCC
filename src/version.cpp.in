@@ -1,6 +1,6 @@
 #define DEF_TOCC_VERSION_TAG "@VERSIONTAG@"
-#define DEF_TOCC_VERSION "4.0.0"
-#define DEF_TOCC_RELEASE_NAME "Pedestal"
+#define DEF_TOCC_VERSION "4.0.1"
+#define DEF_TOCC_RELEASE_NAME "Pedestalv2"
 #define DEF_TOCC_VERSION_FULL DEF_TOCC_VERSION "-" DEF_TOCC_VERSION_TAG
 
 #include "version.h"
