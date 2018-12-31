@@ -1,3 +1,4 @@
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2017, The Monero Project
 //
 // All rights reserved.
@@ -29,7 +30,7 @@
 #include "wallet/api/wallet2_api.h"
 #include "wallet/wallet2.h"
 
-namespace Monero {
+namespace TOCC {
 
 class WalletImpl;
 

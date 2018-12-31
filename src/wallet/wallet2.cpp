@@ -90,12 +90,12 @@ using namespace cryptonote;
 // arbitrary, used to generate different hashes from the same input
 #define CHACHA8_KEY_TAIL 0x8c
 
-#define UNSIGNED_TX_PREFIX "Monero unsigned tx set\004"
-#define SIGNED_TX_PREFIX "Monero signed tx set\004"
-#define MULTISIG_UNSIGNED_TX_PREFIX "Monero multisig unsigned tx set\001"
+#define UNSIGNED_TX_PREFIX "TOCC unsigned tx set\004"
+#define SIGNED_TX_PREFIX "TOCC signed tx set\004"
+#define MULTISIG_UNSIGNED_TX_PREFIX "TOCC multisig unsigned tx set\001"
 
 #define RECENT_OUTPUT_RATIO (0.5) // 50% of outputs are from the recent zone
-#define RECENT_OUTPUT_ZONE ((time_t)(1.8 * 86400)) // last 1.8 day makes up the recent zone (taken from monerolink.pdf, Miller et al)
+#define RECENT_OUTPUT_ZONE ((time_t)(1.8 * 86400)) // last 1.8 day makes up the recent zone (taken from TOCClink.pdf, Miller et al)
 
 #define FEE_ESTIMATE_GRACE_BLOCKS 10 // estimate fee valid for that many blocks
 
@@ -104,9 +104,9 @@ using namespace cryptonote;
 #define SUBADDRESS_LOOKAHEAD_MAJOR 50
 #define SUBADDRESS_LOOKAHEAD_MINOR 200
 
-#define KEY_IMAGE_EXPORT_FILE_MAGIC "Monero key image export\002"
+#define KEY_IMAGE_EXPORT_FILE_MAGIC "TOCC key image export\002"
 
-#define MULTISIG_EXPORT_FILE_MAGIC "Monero multisig export\001"
+#define MULTISIG_EXPORT_FILE_MAGIC "TOCC multisig export\001"
 
 namespace
 {
@@ -2150,8 +2150,8 @@ void wallet2::refresh(uint64_t start_height, uint64_t & blocks_fetched, bool& re
 {
   if(m_light_wallet) {
 
-    // MyMonero get_address_info needs to be called occasionally to trigger wallet sync.
-    // This call is not really needed for other purposes and can be removed if mymonero changes their backend.
+    // MyTOCC get_address_info needs to be called occasionally to trigger wallet sync.
+    // This call is not really needed for other purposes and can be removed if myTOCC changes their backend.
     cryptonote::COMMAND_RPC_GET_ADDRESS_INFO::response res;
 
     // Get basic info
@@ -4262,7 +4262,7 @@ void wallet2::commit_tx(pending_tx& ptx)
     bool r = epee::net_utils::invoke_http_json("/submit_raw_tx", oreq, ores, m_http_client, rpc_timeout, "POST");
     m_daemon_rpc_mutex.unlock();
     THROW_WALLET_EXCEPTION_IF(!r, error::no_connection_to_daemon, "submit_raw_tx");
-    // MyMonero and OpenMonero use different status strings
+    // MyTOCC and OpenTOCC use different status strings
     THROW_WALLET_EXCEPTION_IF(ores.status != "OK" && ores.status != "success" , error::tx_rejected, ptx.tx, ores.status, ores.error);
   }
   else
@@ -5030,7 +5030,7 @@ void wallet2::light_wallet_get_outs(std::vector<std::vector<tools::wallet2::get_
   size_t light_wallet_requested_outputs_count = (size_t)((fake_outputs_count + 1) * 1.5 + 1);
 
   // Amounts to ask for
-  // MyMonero api handle amounts and fees as strings
+  // MyTOCC api handle amounts and fees as strings
   for(size_t idx: selected_transfers) {
     const uint64_t ask_amount = m_transfers[idx].is_rct() ? 0 : m_transfers[idx].amount();
     std::ostringstream amount_ss;
@@ -5899,7 +5899,7 @@ bool wallet2::light_wallet_login(bool &new_address)
   m_daemon_rpc_mutex.lock();
   bool connected = epee::net_utils::invoke_http_json("/login", request, response, m_http_client, rpc_timeout, "POST");
   m_daemon_rpc_mutex.unlock();
-  // MyMonero doesn't send any status message. OpenMonero does.
+  // MyTOCC doesn't send any status message. OpenTOCC does.
   m_light_wallet_connected  = connected && (response.status.empty() || response.status == "success");
   new_address = response.new_address;
   MDEBUG("Status: " << response.status);
@@ -5940,9 +5940,9 @@ void wallet2::light_wallet_get_unspent_outs()
   oreq.amount = "0";
   oreq.address = get_account().get_public_address_str(m_testnet);
   oreq.view_key = string_tools::pod_to_hex(get_account().get_keys().m_view_secret_key);
-  // openMonero specific
+  // openTOCC specific
   oreq.dust_threshold = boost::lexical_cast<std::string>(::config::DEFAULT_DUST_THRESHOLD);
-  // below are required by openMonero api - but are not used.
+  // below are required by openTOCC api - but are not used.
   oreq.mixin = 0;
   oreq.use_dust = true;
 
@@ -6111,7 +6111,7 @@ void wallet2::light_wallet_get_address_txs()
   bool r = epee::net_utils::invoke_http_json("/get_address_txs", ireq, ires, m_http_client, rpc_timeout, "POST");
   m_daemon_rpc_mutex.unlock();
   THROW_WALLET_EXCEPTION_IF(!r, error::no_connection_to_daemon, "get_address_txs");
-  //OpenMonero sends status=success, Mymonero doesn't.
+  //OpenTOCC sends status=success, MyTOCC doesn't.
   THROW_WALLET_EXCEPTION_IF((!ires.status.empty() && ires.status != "success"), error::no_connection_to_daemon, "get_address_txs");
 
 
@@ -6277,7 +6277,7 @@ void wallet2::light_wallet_get_address_txs()
 
   // Calculate wallet balance
   m_light_wallet_balance = ires.total_received-wallet_total_sent;
-  // MyMonero doesnt send unlocked balance
+  // MyTOCC doesnt send unlocked balance
   if(ires.total_received_unlocked > 0)
     m_light_wallet_unlocked_balance = ires.total_received_unlocked-wallet_total_sent;
   else
@@ -6326,7 +6326,7 @@ bool wallet2::light_wallet_key_image_is_ours(const crypto::key_image& key_image,
   crypto::key_image calculated_key_image;
   cryptonote::keypair in_ephemeral;
 
-  // Subaddresses aren't supported in mymonero/openmonero yet. Roll out the original scheme:
+  // Subaddresses aren't supported in myTOCC/openTOCC yet. Roll out the original scheme:
   //   compute D = a*R
   //   compute P = Hs(D || i)*G + B
   //   compute x = Hs(D || i) + b      (and check if P==x*G)
@@ -8857,7 +8857,7 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
     }
   }
 
-  std::string uri = "monero:" + address;
+  std::string uri = "TOCC:" + address;
   unsigned int n_fields = 0;
 
   if (!payment_id.empty())
@@ -8886,9 +8886,9 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
 //----------------------------------------------------------------------------------------------------
 bool wallet2::parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error)
 {
-  if (uri.substr(0, 7) != "monero:")
+  if (uri.substr(0, 7) != "TOCC:")
   {
-    error = std::string("URI has wrong scheme (expected \"monero:\"): ") + uri;
+    error = std::string("URI has wrong scheme (expected \"TOCC:\"): ") + uri;
     return false;
   }
 

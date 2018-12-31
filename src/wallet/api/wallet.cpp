@@ -1,4 +1,5 @@
-// Copyright (c) 2017-2018, TOCC Protocol
+// Copyright (c) 2018-Present TOCC
+// Copyright (c) 2017-2018, Haven Protocol
 //
 // Copyright (c) 2014-2017, The Monero Project
 //
@@ -52,7 +53,7 @@ using namespace cryptonote;
 #undef TOCC_DEFAULT_LOG_CATEGORY
 #define TOCC_DEFAULT_LOG_CATEGORY "WalletAPI"
 
-namespace Monero {
+namespace TOCC {
 
 namespace {
     static const int    DEFAULT_REFRESH_INTERVAL_MILLIS = 1000 * 10;
@@ -1728,4 +1729,4 @@ bool WalletImpl::useForkRules(uint8_t version, int64_t early_blocks) const
 
 } // namespace
 
-namespace Bitmonero = Monero;
+namespace BitTOCC = TOCC;

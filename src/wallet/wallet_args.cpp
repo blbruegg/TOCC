@@ -1,3 +1,4 @@
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2014-2017 The Monero Project.
 //
 // All rights reserved.
@@ -122,7 +123,7 @@ namespace wallet_args
     command_line::add_arg(desc_params, arg_max_concurrency);
     command_line::add_arg(desc_params, arg_config_file);
 
-    i18n_set_language("translations", "monero", lang);
+    i18n_set_language("translations", "TOCC", lang);
 
     po::options_description desc_all;
     desc_all.add(desc_general).add(desc_params);
@@ -135,7 +136,7 @@ namespace wallet_args
       if (command_line::get_arg(vm, command_line::arg_help))
       {
         Print(print) << "TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")" << ENDL;
-        Print(print) << wallet_args::tr("This is the command line monero wallet. It needs to connect to a monero\n"
+        Print(print) << wallet_args::tr("This is the command line TOCC wallet. It needs to connect to a TOCC\n"
 												  "daemon to work correctly.") << ENDL;
         Print(print) << wallet_args::tr("Usage:") << ENDL << "  " << usage;
         Print(print) << desc_all;
@@ -191,7 +192,7 @@ namespace wallet_args
     if (!command_line::is_arg_defaulted(vm, arg_log_level))
       MINFO("Setting log level = " << command_line::get_arg(vm, arg_log_level));
     else
-      MINFO("Setting log levels = " << getenv("MONERO_LOGS"));
+      MINFO("Setting log levels = " << getenv("TOCC_LOGS"));
     MINFO(wallet_args::tr("Logging to: ") << log_path);
 
     Print(print) << boost::format(wallet_args::tr("Logging to %s")) % log_path;

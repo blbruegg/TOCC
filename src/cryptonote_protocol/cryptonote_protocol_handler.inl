@@ -1,5 +1,5 @@
 /// @file
-/// @author rfree (current maintainer/user in monero.cc project - most of code is from CryptoNote)
+/// @author rfree (current maintainer/user in TOCC.cc project - most of code is from CryptoNote)
 /// @brief This is the orginal cryptonote protocol network-events handler, modified by us
 //
 // Copyright (c) 2017-2018 TOCC Protocol
@@ -439,11 +439,11 @@ namespace cryptonote
       std::list<blobdata> have_tx;
 
       // Instead of requesting missing transactions by hash like BTC,
-      // we do it by index (thanks to a suggestion from moneromooo) because
+      // we do it by index (thanks to a suggestion from TOCCmooo) because
       // we're way cooler .. and also because they're smaller than hashes.
       //
       // Also, remember to pepper some whitespace changes around to bother
-      // moneromooo ... only because I <3 him.
+      // TOCCmooo ... only because I <3 him.
       std::vector<size_t> need_tx_indices;
 
       transaction tx;
@@ -483,7 +483,7 @@ namespace cryptonote
           }
 
           // hijacking m_requested objects in connection context to patch up
-          // a possible DOS vector pointed out by @monero-moo where peers keep
+          // a possible DOS vector pointed out by @TOCC-moo where peers keep
           // sending (0...n-1) transactions.
           // If requested objects is not empty, then we must have asked for
           // some missing transacionts, make sure that they're all there.
@@ -527,7 +527,7 @@ namespace cryptonote
             // future todo:
             // tx should only not be added to pool if verification failed, but
             // maybe in the future could not be added for other reasons
-            // according to monero-moo so keep track of these separately ..
+            // according to TOCC-moo so keep track of these separately ..
             //
           }
         }
@@ -864,7 +864,7 @@ namespace cryptonote
       auto time_from_epoh = point.time_since_epoch();
       auto sec = duration_cast< seconds >( time_from_epoh ).count();*/
 
-    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+    //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-TOCC/net/req-all.data", sec, get_avg_block_size());
 
     if(context.m_last_response_height > arg.current_blockchain_height)
     {
@@ -1493,7 +1493,7 @@ skip:
         context.m_last_request_time = boost::posix_time::microsec_clock::universal_time();
         LOG_PRINT_CCONTEXT_L1("-->>NOTIFY_REQUEST_GET_OBJECTS: blocks.size()=" << req.blocks.size() << ", txs.size()=" << req.txs.size()
             << "requested blocks count=" << count << " / " << count_limit << " from " << span.first << ", first hash " << req.blocks.front());
-        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+        //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-TOCC/net/req-all.data", sec, get_avg_block_size());
 
         post_notify<NOTIFY_REQUEST_GET_OBJECTS>(req, context);
         return true;
@@ -1520,7 +1520,7 @@ skip:
 
       //std::string blob; // for calculate size of request
       //epee::serialization::store_t_to_binary(r, blob);
-      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-monero/net/req-all.data", sec, get_avg_block_size());
+      //epee::net_utils::network_throttle_manager::get_global_throttle_inreq().logger_handle_net("log/dr-TOCC/net/req-all.data", sec, get_avg_block_size());
       //LOG_PRINT_CCONTEXT_L1("r = " << 200);
 
       context.m_last_request_time = boost::posix_time::microsec_clock::universal_time();

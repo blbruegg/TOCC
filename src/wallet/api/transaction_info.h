@@ -1,3 +1,4 @@
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2014-2017, The Monero Project
 //
 // All rights reserved.
@@ -32,7 +33,7 @@
 #include <string>
 #include <ctime>
 
-namespace Monero {
+namespace TOCC {
 
 class TransactionHistoryImpl;
 
@@ -84,4 +85,4 @@ private:
 
 } // namespace
 
-namespace Bitmonero = Monero;
+namespace BitTOCC = TOCC;

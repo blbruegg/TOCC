@@ -1,4 +1,4 @@
-// Word list created by Monero contributor sammy007
+// Word list created by TOCC contributor sammy007
 //
 // Copyright (c) 2014-2017, The Monero Project
 //

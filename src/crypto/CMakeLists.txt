@@ -70,9 +70,9 @@ set(crypto_private_headers
   skein_port.h
   cn_slow_hash.hpp)
 
-monero_private_headers(cncrypto
+TOCC_private_headers(cncrypto
   ${crypto_private_headers})
-monero_add_library(cncrypto
+TOCC_add_library(cncrypto
   ${crypto_sources}
   ${crypto_headers}
   ${crypto_private_headers})

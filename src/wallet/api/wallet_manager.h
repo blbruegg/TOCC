@@ -1,3 +1,5 @@
+
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2014-2017, The Monero Project
 //
 // All rights reserved.
@@ -33,7 +35,7 @@
 #include "net/http_client.h"
 #include <string>
 
-namespace Monero {
+namespace TOCC {
 
 class WalletManagerImpl : public WalletManager
 {
@@ -77,4 +79,4 @@ private:
 
 } // namespace
 
-namespace Bitmonero = Monero;
+namespace BitTOCC = TOCC;

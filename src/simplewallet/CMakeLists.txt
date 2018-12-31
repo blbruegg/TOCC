@@ -1,3 +1,4 @@
+# Copyright (c) 2018-Present TOCC
 # Copyright (c) 2014-2017 The Monero Project.
 #
 # All rights reserved.
@@ -34,9 +35,9 @@ set(simplewallet_headers)
 set(simplewallet_private_headers
   simplewallet.h)
 
-monero_private_headers(simplewallet
+TOCC_private_headers(simplewallet
   ${simplewallet_private_headers})
-monero_add_executable(simplewallet
+TOCC_add_executable(simplewallet
   ${simplewallet_sources}
   ${simplewallet_headers}
   ${simplewallet_private_headers})

@@ -1,4 +1,5 @@
-# Copyright (c) 2017-2018, TOCC Protocol
+# Copyright (c) 2018-Present TOCC
+# Copyright (c) 2017-2018, Haven Protocol
 #
 # Portions Copyright (c) 2014-2017 The Monero Project.
 #
@@ -46,9 +47,9 @@ set(wallet_private_headers
   wallet_rpc_server_error_codes.h
   node_rpc_proxy.h)
 
-monero_private_headers(wallet
+TOCC_private_headers(wallet
   ${wallet_private_headers})
-monero_add_library(wallet
+TOCC_add_library(wallet
   ${wallet_sources}
   ${wallet_private_headers})
 target_link_libraries(wallet
@@ -74,9 +75,9 @@ set(wallet_rpc_headers)
 set(wallet_rpc_private_headers
   wallet_rpc_server.h)
 
-monero_private_headers(wallet_rpc_server
+TOCC_private_headers(wallet_rpc_server
   ${wallet_rpc_private_headers})
-monero_add_executable(wallet_rpc_server
+TOCC_add_executable(wallet_rpc_server
   ${wallet_rpc_sources}
   ${wallet_rpc_headers}
   ${wallet_rpc_private_headers})

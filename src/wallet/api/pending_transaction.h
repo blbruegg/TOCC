@@ -1,3 +1,4 @@
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2014-2017, The Monero Project
 //
 // All rights reserved.
@@ -35,7 +36,7 @@
 #include <vector>
 
 
-namespace Monero {
+namespace TOCC {
 
 class WalletImpl;
 class PendingTransactionImpl : public PendingTransaction
@@ -67,4 +68,4 @@ private:
 
 }
 
-namespace Bitmonero = Monero;
+namespace BitTOCC = TOCC;

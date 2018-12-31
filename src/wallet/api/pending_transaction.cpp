@@ -1,3 +1,4 @@
+// Copyright (c) 2018-Present TOCC
 // Copyright (c) 2014-2017, The Monero Project
 //
 // All rights reserved.
@@ -42,7 +43,7 @@
 
 using namespace std;
 
-namespace Monero {
+namespace TOCC {
 
 PendingTransaction::~PendingTransaction() {}
 
@@ -190,5 +191,5 @@ std::vector<std::set<uint32_t>> PendingTransactionImpl::subaddrIndices() const
 
 }
 
-namespace Bitmonero = Monero;
+namespace BitTOCC = TOCC;
 

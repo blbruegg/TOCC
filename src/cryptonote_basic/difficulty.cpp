@@ -127,7 +127,7 @@ namespace cryptonote {
   /*
  # Tom Harold (Degnr8) WT
  # Modified by Zawy to be a weighted-Weighted Harmonic Mean (WWHM)
- * Further credit to thaerkh https://github.com/thaerkh who implemented this DAA into Masari and as a pull request to Monero.
+ * Further credit to thaerkh https://github.com/thaerkh who implemented this DAA into Masari and as a pull request to TOCC.
  # No limits in rise or fall rate should be employed.
  # MTP should not be used.
  k = (N+1)/2  * T

@@ -130,7 +130,7 @@ int main(int argc, char const * argv[])
       return 0;
     }
 
-    // Monero Version
+    // TOCC Version
     if (command_line::get_arg(vm, command_line::arg_version))
     {
       std::cout << "TOCC '" << TOCC_RELEASE_NAME << "' (v" << TOCC_VERSION_FULL << ")" << ENDL;
@@ -159,7 +159,7 @@ int main(int argc, char const * argv[])
     auto data_dir_arg = testnet_mode ? cryptonote::arg_testnet_data_dir : cryptonote::arg_data_dir;
 
     // data_dir
-    //   default: e.g. ~/.bitmonero/ or ~/.bitmonero/testnet
+    //   default: e.g. ~/.bitTOCC/ or ~/.bitTOCC/testnet
     //   if data-dir argument given:
     //     absolute path
     //     relative path: relative to cwd

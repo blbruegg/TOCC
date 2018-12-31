@@ -1,4 +1,5 @@
-// Copyright (c) 2017-2018, TOCC Protocol
+// Copyright (c) 2018-Present TOCC
+// Copyright (c) 2017-2018, Haven Protocol
 //
 // Portions Copyright (c) 2014-2017 The Monero Project.
 //
@@ -3586,7 +3587,7 @@ bool simple_wallet::print_ring_members(const std::vector<tools::wallet2::pending
         ostr << tr(j == source.real_output ? " *" : " ") << res.outs[j].height;
       spent_key_height[i] = res.outs[source.real_output].height;
       spent_key_txid  [i] = res.outs[source.real_output].txid;
-      // visualize the distribution, using the code by moneroexamples onion-monero-viewer
+      // visualize the distribution, using the code by TOCCexamples onion-TOCC-viewer
       const uint64_t resolution = 79;
       std::string ring_str(resolution, '_');
       for (size_t j = 0; j < absolute_offsets.size(); ++j)
