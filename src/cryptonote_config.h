@@ -46,7 +46,7 @@
 #define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            60
 #define CURRENT_TRANSACTION_VERSION                     2
 #define CURRENT_BLOCK_MAJOR_VERSION                     1
-#define CURRENT_BLOCK_MINOR_VERSION                     2
+#define CURRENT_BLOCK_MINOR_VERSION                     1
 #define CRYPTONOTE_V2_POW_BLOCK_VERSION                 2
 #define CRYPTONOTE_V3_POW_BLOCK_VERSION                 3
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT              DIFFICULTY_TARGET * 3
