@@ -35,12 +35,12 @@
 #include "string_tools.h"
 #include "misc_log_ex.h"
 
-#undef MONERO_DEFAULT_LOG_CATEGORY
-#define MONERO_DEFAULT_LOG_CATEGORY "logging"
+#undef TOCC_DEFAULT_LOG_CATEGORY
+#define TOCC_DEFAULT_LOG_CATEGORY "logging"
 
 #define MLOG_BASE_FORMAT "%datetime{%Y-%M-%d %H:%m:%s.%g}\t%thread\t%level\t%logger\t%loc\t%msg"
 
-#define MLOG_LOG(x) CINFO(el::base::Writer,el::base::DispatchAction::FileOnlyLog,MONERO_DEFAULT_LOG_CATEGORY) << x
+#define MLOG_LOG(x) CINFO(el::base::Writer,el::base::DispatchAction::FileOnlyLog,TOCC_DEFAULT_LOG_CATEGORY) << x
 
 using namespace epee;
 
@@ -139,12 +139,12 @@ void mlog_configure(const std::string &filename_base, bool console, const std::s
     rename(name, rname.c_str());
   });
   mlog_set_common_prefix();
-  const char *monero_log = getenv("MONERO_LOGS");
-  if (!monero_log)
+  const char *tocc_logg = getenv("TOCC_LOGS");
+  if (!tocc_logg)
   {
-    monero_log = get_default_categories(0);
+    tocc_logg = get_default_categories(0);
   }
-  mlog_set_log(monero_log);
+  mlog_set_log(tocc_logg);
 }
 
 void mlog_set_categories(const char *categories)
