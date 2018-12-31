@@ -1303,7 +1303,7 @@ namespace cryptonote
       std::string TOCC_ascii =
 
 "\n\n"
-" TTTTTTTTTTTTTTTTTTTTTTT     OOOOOOOOO             CCCCCCCCCCCCC       CCCCCCCCCCCCC\n"
+"TTTTTTTTTTTTTTTTTTTTTTT     OOOOOOOOO             CCCCCCCCCCCCC       CCCCCCCCCCCCC\n"
 "T:::::::::::::::::::::T   OO:::::::::OO        CCC::::::::::::C    CCC::::::::::::C\n"
 "T:::::::::::::::::::::T OO:::::::::::::OO    CC:::::::::::::::C  CC:::::::::::::::C\n"
 "T:::::TT:::::::TT:::::TO:::::::OOO:::::::O  C:::::CCCCCCCC::::C C:::::CCCCCCCC::::C\n"
