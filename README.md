@@ -1,24 +1,25 @@
 # The Other Cryptonight Coin
 
 Copyright (c) 2018-Present The Other Cryptonight Coin (TOCC).
+
 Copyright (c) 2017-2018 Haven Protocol.
+
 Copyright (c) 2014-2017 The Monero Project.   
+
 Portions Copyright (c) 2012-2013 The Cryptonote developers.
 
 ## Resources
 *** Needs Update ***
-- Web: [havenprotocol.com](https://havenprotocol.com)
-- Reddit: [/r/havenprotocol](https://www.reddit.com/r/havenprotocol/)
-- GitHub: [https://github.com/havenprotocol/haven](https://github.com/havenprotocol/haven)
+- Web: 
+- GitHub: [https://github.com/blbruegg/TOCC](https://github.com/blbruegg/TOCC)
 
 
 ## Introduction
 *** Forked from Haven-Protocol ***
-Haven is an experimental cryptocurrency that proposes a new way of achieving a stable fiat value storage while still having free reign to be traded at market value.
+This coin is designed to do 2 things.  Take advantage of Haven Protocol's future advancements, unique hashing algorithm, and fiat storage.  The advantage of this coin is the ability to work in conjunction with haven via merge mining.  It can also be mined as a stand alone coin.
 
 
-
-**Privacy:** Haven uses a cryptographically sound system to allow you to send and receive funds without your transactions being easily revealed on the blockchain (the ledger of transactions that everyone has). This ensures that your purchases, receipts, and all transfers remain absolutely private by default.
+**Privacy:** Haven and TOCC uses a cryptographically sound system to allow you to send and receive funds without your transactions being easily revealed on the blockchain (the ledger of transactions that everyone has). This ensures that your purchases, receipts, and all transfers remain absolutely private by default.
 
 **Security:** Using the power of a distributed peer-to-peer consensus network, every transaction on the network is cryptographically secured. Individual wallets have a 25 word mnemonic seed that is only displayed once, and can be written down to backup the wallet. Wallet files are encrypted with a passphrase to ensure they are useless if stolen.
 
@@ -30,22 +31,23 @@ Haven is an experimental cryptocurrency that proposes a new way of achieving a s
 - Total supply: 18,400,000 coins before tail emission and the coins that are minted and burned via offshore storage.
 - Coin symbol: XHV
 - Coin Units:
-  - 1 picohaven/havnoshi = 0.000000000001 XHV (10^-12 -smallest unit)
-  - 1 nanohaven = 0.000000001 XHV (10^-9)
-  - 1 microhaven = 0.000001 XHV (10^-6)
-  - 1 millihaven = 0.001 XHV (10^-3)
+  - 1 picotocc/toccoshi = 0.000000000001 XHV (10^-12 -smallest unit)
+  - 1 nanotocc = 0.000000001 TOCC (10^-9)
+  - 1 microtocc = 0.000001 TOCC (10^-6)
+  - 1 millitocc = 0.001 TOCC (10^-3)
 - Hash algorithm: CryptoNight (Proof-Of-Work)
+- Variant Haven
 
 
 ## About this project
 
-This is the core implementation of Haven. It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of Haven that uses the protocol and network in a compatible manner.
+This is a leaned down optimized blockchain using the CN_Haven Hashing Algorithm. It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of TOCC that uses the protocol and network in a compatible manner.
 
 ## License
 
 See [LICENSE](LICENSE).
 
-## Compiling Haven from source
+## Compiling TOCC from source
 
 ### Dependencies
 
@@ -79,14 +81,15 @@ library archives (`.a`).
 | Graphviz       | any           | NO       | `graphviz`         | `graphviz`     | YES      | Documentation  |
 
 
-sudo apt-get install build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libminiupnpc-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev libgtest-dev doxygen graphviz
+Debian / Ubuntu one liner for all dependencies
+sudo apt update && sudo apt install build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz libpgm-dev
 
 [^] On Debian/Ubuntu `libgtest-dev` only includes sources and headers. You must
 build the library binary manually. This can be done with the following command ```sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libg* /usr/lib/ ```
 
 ### Build instructions
 
-Haven uses the CMake build system and a top-level [Makefile](Makefile) that
+TOCC uses the CMake build system and a top-level [Makefile](Makefile) that
 invokes cmake commands as needed.
 
 #### On Linux and OS X
@@ -97,6 +100,13 @@ invokes cmake commands as needed.
         cd haven
         make
 
+		SUB Options for MAKE
+		make release 
+		make release-test
+		make release-all 
+		make release-static
+		
+		
     *Optional*: If your machine has several cores and enough memory, enable
     parallel build by running `make -j<number of threads>` instead of `make`. For
     this to be worthwhile, the machine should have one core and about 2GB of RAM
@@ -109,7 +119,7 @@ invokes cmake commands as needed.
 
 * Add `PATH="$PATH:$HOME/haven/build/release/bin"` to `.profile`
 
-* Run Haven with `havend --detach`
+* Run TOCC with `TOCCd --detach`
 
 * **Optional**: build and run the test suite to verify the binaries:
 
@@ -148,9 +158,9 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 ```
 * Clone haven and checkout most recent release version:
 ```
-        git clone https://github.com/havenprotocol/haven.git
-	cd haven
-	git checkout tags/v0.11.0.0
+        git clone https://github.com/blbruegg/TOCC.git
+	cd TOCC
+	git checkout tags/v4.0.2
 ```
 * Build:
 ```
@@ -160,9 +170,9 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 
 * The resulting executables can be found in `build/release/bin`
 
-* Add `PATH="$PATH:$HOME/haven/build/release/bin"` to `.profile`
+* Add `PATH="$PATH:$HOME/TOCC/build/release/bin"` to `.profile`
 
-* Run Haven with `havend --detach`
+* Run Haven with `TOCCd --detach`
 
 * You may wish to reduce the size of the swap file after the build has finished, and delete the boost directory from your home directory
 
@@ -336,7 +346,7 @@ cmake ..
 doas make install
 ```
 
-Build haven: `env DEVELOPER_LOCAL_TOOLS=1 BOOST_ROOT=/usr/local make release-static`
+Build TOCC: `env DEVELOPER_LOCAL_TOOLS=1 BOOST_ROOT=/usr/local make release-static`
 
 ### On Solaris:
 
@@ -376,9 +386,9 @@ The build places the binary in `bin/` sub-directory within the build directory
 from which cmake was invoked (repository root by default). To run in
 foreground:
 
-    ./bin/havend
+    ./bin/TOCCd
 
-To list all available options, run `./bin/havend --help`.  Options can be
+To list all available options, run `./bin/TOCCd --help`.  Options can be
 specified either on the command line or in a configuration file passed by the
 `--config-file` argument.  To specify an option in the configuration file, add
 a line with the syntax `argumentname=value`, where `argumentname` is the name
@@ -386,7 +396,7 @@ of the argument without the leading dashes, for example `log-level=1`.
 
 To run in background:
 
-    ./bin/havend --log-file havend.log --detach
+    ./bin/TOCCd --log-file TOCCd.log --detach
 
 To run as a systemd service, copy
 [havend.service](utils/systemd/havend.service) to `/etc/systemd/system/` and
@@ -435,23 +445,23 @@ When it terminates with an output along the lines of "Segmentation fault (core d
 
 You can now analyse this core dump with `gdb` as follows:
 
-`gdb /path/to/havend /path/to/dumpfile`
+`gdb /path/to/TOCCd /path/to/dumpfile`
 
 Print the stack trace with `bt`
 
-* To run haven within gdb:
+* To run TOCC within gdb:
 
 Type `gdb /path/to/havend`
 
 Pass command-line options with `--args` followed by the relevant arguments
 
-Type `run` to run havend
+Type `run` to run TOCCd
 
 ### Analysing memory corruption
 
 We use the tool `valgrind` for this.
 
-Run with `valgrind /path/to/havend`. It will be slow.
+Run with `valgrind /path/to/TOCCd`. It will be slow.
 
 ### LMDB
 
@@ -459,7 +469,7 @@ Instructions for debugging suspected blockchain corruption as per @HYC
 
 There is an `mdb_stat` command in the LMDB source that can print statistics about the database but it's not routinely built. This can be built with the following command:
 
-`cd ~/haven/external/db_drivers/liblmdb && make`
+`cd ~/TOCC/external/db_drivers/liblmdb && make`
 
 The output of `mdb_stat -ea <path to blockchain dir>` will indicate inconsistencies in the blocks, block_heights and block_info table.
 
