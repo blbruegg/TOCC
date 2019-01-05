@@ -1,5 +1,5 @@
 /// @file
-/// @author rfree (current maintainer in monero.cc project)
+/// @author rfree (current maintainer in tocc.cc project)
 /// @brief implementaion for throttling of connection (count and rate-limit speed etc)
 
 // Copyright (c) 2014-2017, The Monero Project
