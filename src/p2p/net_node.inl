@@ -379,13 +379,13 @@ namespace nodetool
     {
       full_addrs.insert("12.174.183.93:26969");
       full_addrs.insert("70.231.32.24:26969");
-      full_addrs.insert("54.80.6.72:26969");
+      full_addrs.insert("46.101.244.231:26969");
     }
     else
     {
       full_addrs.insert("12.174.183.93:16969");
       full_addrs.insert("70.231.32.24:16969");
-      full_addrs.insert("54.80.6.72:16969");
+      full_addrs.insert("46.101.244.231:16969");
     }
     return full_addrs;
   }

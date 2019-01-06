@@ -130,7 +130,7 @@ namespace nodetool
     const std::vector<std::string> m_seed_nodes_list =
     { "12.174.183.93",
       "70.231.32.24",
-      "54.80.6.72"
+      "46.101.244.231"
     };
 
     bool islimitup=false;
