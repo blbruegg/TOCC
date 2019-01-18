@@ -2304,7 +2304,7 @@ output_data_t BlockchainLMDB::get_output_key(const uint64_t &global_index) const
   return od;
 }
 
-output_data_t BlockchainLMDB::get_output_key(const uint64_t& amount, const uint64_t& index)
+output_data_t BlockchainLMDB::get_output_key(const uint64_t& amount, const uint64_t& index, bool include_commitment) const
 {
   LOG_PRINT_L3("BlockchainLMDB::" << __func__);
   check_open();
@@ -2330,7 +2330,8 @@ output_data_t BlockchainLMDB::get_output_key(const uint64_t& amount, const uint6
   {
     const pre_rct_outkey *okp = (const pre_rct_outkey *)v.mv_data;
     memcpy(&ret, &okp->data, sizeof(pre_rct_output_data_t));;
-    ret.commitment = rct::zeroCommit(amount);
+	if (include_commitment)
+      ret.commitment = rct::zeroCommit(amount);
   }
   TXN_POSTFIX_RDONLY();
   return ret;
